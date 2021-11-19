@@ -22,7 +22,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(false);
+$routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -32,7 +32,13 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('{locale}/books', 'Home::index');
+
+$routes->group('{locale}', ['namespace' => 'App\Controllers'], function($routes){
+	$routes->get('books', 'Home::index');
+	$routes->post('translate', 'Home::translate');
+	$routes->get('test', 'Home::test');
+	$routes->get('test2', 'Home::test2');
+});
 
 /*
  * --------------------------------------------------------------------

@@ -229,6 +229,16 @@
 
 <!-- CONTENT -->
 
+<div>
+	<form method="post" action="<?= base_url(session('locale').'/translate') ?>">
+		<button type="submit">Change language</button>
+	</form>
+</div>
+<div>
+	<form method="get" action="<?= base_url(session('locale').'/test') ?>">
+		<button type="submit">test</button>
+	</form>
+</div>
 <section>
 
 	<h1>About this page</h1>
