@@ -279,7 +279,7 @@
 		</form>
 	</div>
 	<div>
-		<form method="get" action="<?= base_url($lang . '/test') ?>">
+		<form method="get" action="<?= base_url('test') ?>">
 			<button type="submit">test</button>
 		</form>
 	</div>

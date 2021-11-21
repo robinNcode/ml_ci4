@@ -6,7 +6,7 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		
+
 
 		return view('welcome_message', [
 			'welcome' => lang('msg.welcome'),
@@ -26,9 +26,9 @@ class Home extends BaseController
 
 	public function test()
 	{
-		echo 'I am working man';
+		echo lang('msg.welcome');
 
-		echo '<div><form method="get" action="' . base_url(session("locale") . "/test2") . '">
+		echo '<div><form method="get" action="' . base_url("test2") . '">
 			<button type="submit">test2</button></form></div>';
 	}
 
