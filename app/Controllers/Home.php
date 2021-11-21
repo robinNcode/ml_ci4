@@ -11,17 +11,9 @@ class Home extends BaseController
         ]);
 	}
 
-	public function translate()
+	public function etob()
 	{
-		$lang = $this->request->setLocale(session('locale')); //en
-		
-		if($lang == 'bn'){
-			session()->set('locale', 'bn');
-		}
-		else{
-			session()->set('locale', 'en');
-		}
-		
+		session()->set('locale', 'bn');
 		return redirect()->to('books');
 		
 	}
