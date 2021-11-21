@@ -6,9 +6,7 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		session()->get('language') ?? session()->set('language', 'en');
-
-		$this->request->setLocale(session()->get('language'));
+		
 
 		return view('welcome_message', [
 			'welcome' => lang('msg.welcome'),

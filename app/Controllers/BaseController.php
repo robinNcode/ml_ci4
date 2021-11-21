@@ -50,6 +50,9 @@ class BaseController extends Controller
 		// Do Not Edit This Line
 		parent::initController($request, $response, $logger);
 
+		session()->get('language') ?? session()->set('language', 'en');
+
+		$this->request->setLocale(session()->get('language'));
 		//--------------------------------------------------------------------
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
