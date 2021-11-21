@@ -6,31 +6,31 @@ class Home extends BaseController
 {
 	public function index()
 	{
+		session()->get('language') ?? session()->set('language', 'en');
+
+		$this->request->setLocale(session()->get('language'));
+
 		return view('welcome_message', [
-		    'welcome' => lang('msg.welcome'),
-        ]);
+			'welcome' => lang('msg.welcome'),
+		]);
 	}
 
 	public function translate()
 	{
-		$lang = $this->request->setLocale(session('locale')); //en
-		
-		if($lang == 'bn'){
-			session()->set('locale', 'bn');
+		if (session()->get('language') == 'en') {
+			session()->set('language', 'bn');
+		} else {
+			session()->set('language', 'en');
 		}
-		else{
-			session()->set('locale', 'en');
-		}
-		
-		return redirect()->to('books');
-		
+
+		return redirect()->to('');
 	}
 
 	public function test()
 	{
 		echo 'I am working man';
 
-		echo '<div><form method="get" action="'.base_url(session("locale")."/test2").'">
+		echo '<div><form method="get" action="' . base_url(session("locale") . "/test2") . '">
 			<button type="submit">test2</button></form></div>';
 	}
 
@@ -38,7 +38,7 @@ class Home extends BaseController
 	{
 		echo 'I am working man toooooooooooo!!!!!!!';
 
-		echo '<div><form method="get" action="'.base_url(session("locale")."/test3").'">
+		echo '<div><form method="get" action="' . base_url(session("locale") . "/test3") . '">
 			<button type="submit">test2</button></form></div>';
 	}
 }
