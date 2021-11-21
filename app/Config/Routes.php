@@ -1,9 +1,8 @@
-<?php
-
-namespace Config;
+<?php namespace Config;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
+//$request = Services::request();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
@@ -29,17 +28,17 @@ $routes->setAutoRoute(true);
  * Route Definitions
  * --------------------------------------------------------------------
  */
-
+//d($this->request->getLocale(), session('locale'));
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-
+//session()->start();
 $routes->group('{locale}', ['namespace' => 'App\Controllers'], function($routes){
 	$routes->get('books', 'Home::index');
 	$routes->post('translate', 'Home::translate');
 	$routes->get('test', 'Home::test');
 	$routes->get('test2', 'Home::test2');
 });
-
+//session()->destroy();
 /*
  * --------------------------------------------------------------------
  * Additional Routing

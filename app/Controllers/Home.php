@@ -6,8 +6,6 @@ class Home extends BaseController
 {
 	public function index()
 	{
-	    $lang = $this->request->getLocale();
-
 		return view('welcome_message', [
 		    'welcome' => lang('msg.welcome'),
         ]);
@@ -15,14 +13,17 @@ class Home extends BaseController
 
 	public function translate()
 	{
-		$lang = $this->request->getLocale();
-
-		if($lang == 'en')
+		$lang = $this->request->setLocale(session('locale')); //en
+		
+		if($lang == 'bn'){
 			session()->set('locale', 'bn');
-		else
+		}
+		else{
 			session()->set('locale', 'en');
-			
+		}
+		
 		return redirect()->to('books');
+		
 	}
 
 	public function test()

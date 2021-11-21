@@ -228,14 +228,22 @@
 </header>
 
 <!-- CONTENT -->
-
+<?php
+	//session()->set('locale', seesion('locale') ?? 'en');
+	if(session('locale') == 'bn'){
+		$lang = 'en';
+	}
+	else{
+		$lang = 'bn';
+	}
+?>
 <div>
-	<form method="post" action="<?= base_url(session('locale').'/translate') ?>">
+	<form method="post" action="<?= base_url($lang.'/translate') ?>">
 		<button type="submit">Change language</button>
 	</form>
 </div>
 <div>
-	<form method="get" action="<?= base_url(session('locale').'/test') ?>">
+	<form method="get" action="<?= base_url($lang.'/test') ?>">
 		<button type="submit">test</button>
 	</form>
 </div>
